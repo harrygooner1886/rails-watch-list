@@ -1,0 +1,16 @@
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://image.pollinations.ai/prompt/wagon-movie-list);">
+  <div class="container">
+    <h1>Harry's Movie list!</h1>
+  </div>
+</div>
+<div class="container mt-3">
+  <div class="cards">
+    <% @lists.each do |list| %>
+      <%= link_to list_path(list) do  %>
+        <div class="card-category" <%= list.name %>-movie;>
+          <%= list.name %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>

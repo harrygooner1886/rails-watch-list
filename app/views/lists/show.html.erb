@@ -1,0 +1,22 @@
+<div class="container">
+  <h1><%= @list.name %></h1>
+  <%= link_to "back to lists", lists_path %>
+  <% @list.bookmarks.each do |bookmark| %>
+    <div class="card-product my-2">
+      <%= image_tag bookmark.movie.poster_url, alt: bookmark.movie.title %>
+      <div class="card-product-infos">
+        <h2><%= bookmark.movie.title %> - ⭐️ <%= bookmark.movie.rating %></h2>
+        <p><%= bookmark.movie.overview %></p>
+        <div class="d-flex justify-content-between">
+          <p><i class="fa-solid fa-comment"></i><em><%= bookmark.comment %></em></p>
+          <%= link_to list_bookmark_path(@list, bookmark), { data: { turbo_method: :delete, turbo_confirm: 'ok?' }} do %>
+            <i class="fa-solid fa-trash"></i>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+  <p class="text-center">
+    <%= link_to new_list_bookmark_path(@list) do %><i class="fa-solid fa-circle-plus"></i><% end %>
+  </p>
+</div>
