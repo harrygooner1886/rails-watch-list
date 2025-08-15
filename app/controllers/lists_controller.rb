@@ -27,6 +27,16 @@ class ListsController < ApplicationController
     end
   end
 
+  def destroy
+    # find the bookmark to delete
+    @list = List.find(params[:id])
+
+    if @list.destroy
+      redirect_to lists_path
+    else
+      render 'lists/index', status: :unprocessable_content
+    end
+  end
   private
 
   def list_params

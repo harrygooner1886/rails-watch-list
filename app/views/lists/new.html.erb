@@ -1,7 +1,8 @@
 <h1>Create a list!</h1>
 <%= simple_form_for @list do |f| %>
   <%= f.input :name %>
+  <%= f.input :photo, as: :file %>
   <%= f.submit %>
 <% end %>
 
-<%= link_to 'All lists', lists_path, class: 'btn btn-primary'   %>
+<%= link_to "Back", root_path, class: "btn btn-dark mt-2" %>

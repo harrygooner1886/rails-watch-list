@@ -1,16 +1,18 @@
-<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(/app/assets)">
+<div class="banner" style="background-image: linear-gradient(rgba(194, 18, 18, 0.4),rgba(22, 21, 21, 0.4))">
   <div class="container">
-    <h1>Harrygooner's <strong>Movie<strong>List</strong>!</h1>
+    <h1>Harrygooner's <strong>Movie<strong>List</strong></h1>
     <p>A collection of my favourite movies</p>
-    <a class="btn btn-flat" href="#">Apply now</a>
   </div>
 </div>
 </div>
 <div class="container mt-3">
   <div class="cards">
     <% @lists.each do |list| %>
+      <%= link_to list_path(list), { data: { turbo_method: :delete, turbo_confirm: 'ok?' }} do %>
+      <i class="fa-solid fa-trash fa-2x text-danger"></i>
+  <% end %>
       <%= link_to list_path(list) do  %>
-        <div class="card-category" <%= list.name %>-movie;>
+        <div class="card-category" <%= list.name %>-movie; >
           <%= list.name %>
         </div>
       <% end %>
